@@ -4,5 +4,5 @@ This template provides a minimal setup to get React working in Vite with HMR and
 
 A Visual Studio Code portfolio website built with React.js and tailwind.
 
-- [Live]() 
+- [Live](https://vscode-themes-portfolio.netlify.app/) 
 
