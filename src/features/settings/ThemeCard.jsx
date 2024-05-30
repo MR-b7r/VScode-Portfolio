@@ -1,10 +1,23 @@
 import React from "react";
 import { useTheme } from "../../context/ThemeContext";
+import { motion } from "framer-motion";
 
-const ThemeCard = ({ name, publisher, theme, img }) => {
+const fadeInAnimationVar = {
+  initial: { opacity: 0, y: 40 },
+  animate: (index) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: 0.1 * index, duration: 0.3 },
+  }),
+};
+const ThemeCard = ({ name, publisher, theme, img, index }) => {
   const { changeTheme } = useTheme();
   return (
-    <div
+    <motion.div
+      variants={fadeInAnimationVar}
+      initial="initial"
+      animate="animate"
+      custom={index}
       className={`flex flex-col items-center justify-between gap-y-3 bg-mainBg p-4 text-center text-textColor rounded-lg  shadow-md hover:shadow-lg `}
     >
       <span>
@@ -22,7 +35,7 @@ const ThemeCard = ({ name, publisher, theme, img }) => {
       >
         Set Color Theme
       </button>
-    </div>
+    </motion.div>
   );
 };
 

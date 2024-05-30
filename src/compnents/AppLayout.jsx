@@ -7,7 +7,6 @@ import { useTheme } from "../context/ThemeContext";
 
 const AppLayout = () => {
   const { theme } = useTheme();
-  console.log(theme);
   return (
     <div className={`${theme}`}>
       <NavBar />

@@ -1,5 +1,21 @@
 import React from "react";
-
+import { motion } from "framer-motion";
+const leftAnimationVar = {
+  initial: { opacity: 0, x: -100 },
+  animate: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.5 },
+  },
+};
+const fadeInAnimationVar = {
+  initial: { opacity: 0, x: 30 },
+  animate: (index) => ({
+    opacity: 1,
+    x: 0,
+    transition: { delay: 0.15 * index, duration: 0.5 },
+  }),
+};
 const ContactSocial = () => {
   const socials = [
     {
@@ -30,7 +46,12 @@ const ContactSocial = () => {
   ];
 
   return (
-    <div className="flex-col gap-y-2 xl:w-1/2">
+    <motion.div
+      className="flex-col gap-y-2 xl:w-1/2"
+      variants={leftAnimationVar}
+      initial="initial"
+      animate="animate"
+    >
       <h2 className="md:text-[33px] text-[28px] text-textColor tracking-wider">
         Contact Me on Social
       </h2>
@@ -40,7 +61,14 @@ const ContactSocial = () => {
         </p>
         {socials.map((social, i) => {
           return (
-            <div className=" text-base md:text-2xl" key={social.social}>
+            <motion.div
+              className=" text-base md:text-2xl"
+              key={social.social}
+              variants={fadeInAnimationVar}
+              initial="initial"
+              animate="animate"
+              custom={i}
+            >
               <span className="text-textColor">{i + 2}</span>
               <span className="pl-5 text-textColor md:pl-8">
                 {social.social}:
@@ -53,14 +81,14 @@ const ContactSocial = () => {
               >
                 {social.username};
               </a>
-            </div>
+            </motion.div>
           );
         })}
         <p className="line text-base text-textColor md:text-2xl">
           <span className="text-textColor">7</span> &#125;
         </p>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

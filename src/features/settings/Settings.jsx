@@ -46,13 +46,14 @@ const Settings = () => {
           Change Theme
         </h2>
         <div className="grid xl:grid-cols-4 md:grid-cols-3 gap-5">
-          {themeInfo.map((info) => (
+          {themeInfo.map((info, i) => (
             <ThemeCard
               key={info.name}
               name={info.name}
               img={info.img}
               publisher={info.publisher}
               theme={info.theme}
+              index={i}
             />
           ))}
         </div>

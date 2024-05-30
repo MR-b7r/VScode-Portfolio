@@ -1,6 +1,17 @@
 import React from "react";
 import { ProjectInfo } from "./ProjectInfo";
 import { Helmet, HelmetProvider } from "react-helmet-async";
+import { motion } from "framer-motion";
+
+const fadeInAnimationVar = {
+  initial: { opacity: 0, y: 40 },
+  animate: (index) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: 0.1 * index, duration: 0.3 },
+  }),
+};
+
 const Projects = () => {
   return (
     <HelmetProvider>
@@ -8,13 +19,15 @@ const Projects = () => {
         <title>Haitham B7R | Projects</title>
       </Helmet>
       <div className="bg-mainBg p-8 flex flex-col justify-center md:justify-normal">
-        <h1 className="pb-5 text-3xl text-textColor">
-          Stuff of builded Projects{" "}
-        </h1>
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4 w-4/6 md:w-full self-center">
-          {ProjectInfo.map((card) => (
-            <div
+        <h1 className="pb-5 text-3xl text-textColor">Projects</h1>
+        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4 md:w-full self-center">
+          {ProjectInfo.map((card, i) => (
+            <motion.div
               key={card.title}
+              variants={fadeInAnimationVar}
+              initial="initial"
+              animate="animate"
+              custom={i}
               className="flex flex-col gap-2 items-start text-textColor cursor-pointer rounded-t-3xl bg-articleBg rounded-b-2xl "
             >
               <img
@@ -57,7 +70,7 @@ const Projects = () => {
                   Live Demo
                 </a>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

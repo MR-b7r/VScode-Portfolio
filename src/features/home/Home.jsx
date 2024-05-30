@@ -1,7 +1,28 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Illustration from "./Illustration";
 import { Helmet, HelmetProvider } from "react-helmet-async";
+
+import Illustration from "./Illustration";
+
+import { TypeAnimation } from "react-type-animation";
+import { motion } from "framer-motion";
+
+const leftAnimationVar = {
+  initial: { opacity: 0, x: -100 },
+  animate: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.5 },
+  },
+};
+const rightAnimationVar = {
+  initial: { opacity: 0, x: 100 },
+  animate: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.5 },
+  },
+};
 
 const Home = () => {
   return (
@@ -15,14 +36,29 @@ const Home = () => {
             I Provide <br /> Service
           </h1>
         </div>
-        <div className="flex flex-col z-20 sm:ml-20 items-start mb-10 lg:mb-0">
+        <motion.div
+          className="flex flex-col z-20 sm:ml-20 items-start mb-10 lg:mb-0"
+          variants={leftAnimationVar}
+          initial="initial"
+          animate="animate"
+        >
           <div className="flex flex-col  items-start ">
             <h2 className="sm:text-[50px] text-[40px] font-black text-stone-200 mb-2">
               Haitham Bahr
             </h2>
-            <p className="font-bold text-[25px] sm:text-[35px] text-stone-300">
+            {/* <p className="font-bold text-[25px] sm:text-[35px] text-stone-300">
               Front End Web Developer
-            </p>
+            </p> */}
+            <TypeAnimation
+              sequence={[
+                // Same substring at the start will only be typed once, initially
+                "Front End Web Developer",
+                1000,
+              ]}
+              speed={40}
+              repeat={Infinity}
+              className="font-bold text-[25px] sm:text-[35px] text-stone-300"
+            />
           </div>
           <div className="xsm:self-start self-center flex xsm:flex-row mt-10 xsm:gap-x-7 flex-col gap-y-4 ">
             <Link
@@ -38,10 +74,15 @@ const Home = () => {
               <button className="text-center text-white ">Contact Me</button>
             </Link>
           </div>
-        </div>
-        <div className=" justify-end items-center ml-10 flex flex-1">
+        </motion.div>
+        <motion.div
+          className=" justify-end items-center ml-10 flex flex-1"
+          variants={rightAnimationVar}
+          initial="initial"
+          animate="animate"
+        >
           <Illustration />
-        </div>
+        </motion.div>
       </div>
     </HelmetProvider>
   );

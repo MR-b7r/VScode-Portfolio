@@ -5,7 +5,7 @@ export const ProjectInfo = [
   {
     title: "Wild-Oasis",
     description:
-      "World Wise is an interactive web application (NOT responsive). User could book room of variance Cabins that user can Edit, Add, Delete. Login, Signup with verification message would be sent via provided email.Forgot Password that will send a message to provided email to make a new password",
+      "Allows users to book rooms in various cabins with functionalities to Edit, Add, and Delete bookings. Utilizes Supabase for state management and efficient data handling. Includes user authentication features such as Login, Signup",
 
     image: oasis,
     tags: [
@@ -32,7 +32,7 @@ export const ProjectInfo = [
   {
     title: "Fast React Pizza",
     description:
-      "a simulate to real Pizza store, where you can order and view the available Pizzas",
+      "Utilizes Redux for state management, allowing users to customize orders with real-time updates to the cart and total price calculations. Designed with responsive design principles using TailwindCSS for a seamless experience across devices.",
 
     image: pizza,
     tags: ["react", "tailwind", "redux toolkit"],

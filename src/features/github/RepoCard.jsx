@@ -1,10 +1,27 @@
 import React from "react";
 import github_icon from "../../assets/icons/github_icon.svg";
 import link_icon from "../../assets/icons/link_icon.svg";
-const RepoCard = ({ name, desc, url, homepage }) => {
+
+import { motion } from "framer-motion";
+
+const fadeInAnimationVar = {
+  initial: { opacity: 0, y: 50 },
+  animate: (index) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: 0.2 * index, duration: 0.5 },
+  }),
+};
+const RepoCard = ({ name, desc, url, homepage, index }) => {
   const customizeName = name.split("-").at(-1);
   return (
-    <div className=" flex  max-w-xs flex-col justify-between space-y-5 rounded-lg  bg-articleBg p-4">
+    <motion.div
+      className=" flex  max-w-xs flex-col justify-between space-y-5 rounded-lg  bg-articleBg p-4"
+      variants={fadeInAnimationVar}
+      initial="initial"
+      animate="animate"
+      custom={index}
+    >
       <h3 className=" text-xl font-semibold text-accentColor">
         {customizeName}
       </h3>
@@ -19,7 +36,7 @@ const RepoCard = ({ name, desc, url, homepage }) => {
           </a>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -4,6 +4,16 @@ import { useForm } from "react-hook-form";
 import emailjs from "@emailjs/browser";
 import toast from "react-hot-toast";
 import { Helmet, HelmetProvider } from "react-helmet-async";
+import { motion } from "framer-motion";
+
+const rightAnimationVar = {
+  initial: { opacity: 0, x: 100 },
+  animate: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.5 },
+  },
+};
 const Contact = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { register, formState, handleSubmit, reset } = useForm();
@@ -38,7 +48,12 @@ const Contact = () => {
       </Helmet>
       <div className="flex xl:flex-row flex-col  justify-between  gap-8 bg-mainBg px-8 pt-5 w-full">
         <ContactSocial />
-        <div className="flex- flex-col xl:w-1/2  xl:pl-10">
+        <motion.div
+          className="flex- flex-col xl:w-1/2  xl:pl-10"
+          variants={rightAnimationVar}
+          initial="initial"
+          animate="animate"
+        >
           <p className="capitalize md:text-[33px] text-[28px] text-textColor tracking-wider">
             Or fill out this form
           </p>
@@ -142,7 +157,7 @@ const Contact = () => {
               Submit
             </button>
           </form>
-        </div>
+        </motion.div>
       </div>
     </HelmetProvider>
   );
